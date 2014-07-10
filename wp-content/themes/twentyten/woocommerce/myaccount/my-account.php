@@ -4,7 +4,7 @@
  * This is a very important page for LookingGlass, so I wanted to customize it. It's certainly 
  * a bit of hack, but should be ok.  It's mostly copied and merged from existing code.
  */
- ?>
+?>
 
 
 <?php
@@ -28,9 +28,9 @@ wc_print_notices(); ?>
     <?php
     printf( __( '<a href="%s">Edit your name, email, & password</a><br>
         Not %s? <a href="%s">Sign out</a> ' ),
-        wc_get_endpoint_url( 'edit-address', 'billing'),
-        $current_user->display_name,
-        wp_logout_url( get_permalink( wc_get_page_id( 'myaccount' ) ))
+    wc_get_endpoint_url( 'edit-address', 'billing'),
+    $current_user->display_name,
+    wp_logout_url( get_permalink( wc_get_page_id( 'myaccount' ) ))
     );
     ?>
 </p>
@@ -41,7 +41,7 @@ wc_print_notices(); ?>
 <p><strong>Please confirm this data is complete!</strong></p>
 <button onclick="location.href='<?php printf("%s", wc_get_endpoint_url( 'edit-address', 'billing')); ?>'"> Edit Information
 </button>
-   
+
 
 <?php
 // This is inlined from form-edit-address, but the following two variables need to be initialized.
@@ -49,29 +49,29 @@ $load_address="billing";
 // from class-wc-shortcode-my-account.php
 $address = WC()->countries->get_address_fields( get_user_meta( get_current_user_id(), $load_address . '_country', true ), $load_address . '_' );
 // Prepare values
-        foreach ( $address as $key => $field ) {
+foreach ( $address as $key => $field ) {
 
-            $value = get_user_meta( get_current_user_id(), $key, true );
+    $value = get_user_meta( get_current_user_id(), $key, true );
 
-            if ( ! $value ) {
-                switch( $key ) {
-                    case 'billing_email' :
-                    case 'shipping_email' :
-                        $value = $current_user->user_email;
-                    break;
-                    case 'billing_country' :
-                    case 'shipping_country' :
-                        $value = WC()->countries->get_base_country();
-                    break;
-                    case 'billing_state' :
-                    case 'shipping_state' :
-                        $value = WC()->countries->get_base_state();
-                    break;
-                }
-            }
-
-            $address[ $key ]['value'] = apply_filters( 'woocommerce_my_account_edit_address_field_value', $value, $key, $load_address );
+    if ( ! $value ) {
+        switch( $key ) {
+            case 'billing_email' :
+            case 'shipping_email' :
+            $value = $current_user->user_email;
+            break;
+            case 'billing_country' :
+            case 'shipping_country' :
+            $value = WC()->countries->get_base_country();
+            break;
+            case 'billing_state' :
+            case 'shipping_state' :
+            $value = WC()->countries->get_base_state();
+            break;
         }
+    }
+
+    $address[ $key ]['value'] = apply_filters( 'woocommerce_my_account_edit_address_field_value', $value, $key, $load_address );
+}
 
 
 
@@ -89,16 +89,16 @@ get_currentuserinfo();
 <?php else : ?>
 
     <form method="post">
-  
+      
         <?php foreach ( $address as $key => $field ) : ?> 
 
-            <?php woocommerce_form_field( $key, $field, ! empty( $_POST[ $key ] ) ? wc_clean( $_POST[ $key ] ) : $field['value'] ); ?>
+        <?php woocommerce_form_field( $key, $field, ! empty( $_POST[ $key ] ) ? wc_clean( $_POST[ $key ] ) : $field['value'] ); ?>
 
-        <?php endforeach; ?>
+    <?php endforeach; ?>
 
 
 
-    </form>
+</form>
 
 <?php endif; ?>
 
