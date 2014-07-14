@@ -25,10 +25,13 @@ wc_print_notices(); ?>
 <?php do_action( 'woocommerce_before_my_account' ); ?>
 
 <p class="myaccount_user">
+    <a  class="button" href='<?php printf("%s", wc_customer_edit_account_url()); ?>'> Edit email/PW
+    </a>
+    <a  class="button" href='<?php printf("%s", wc_get_endpoint_url( 'edit-address', 'billing')); ?>'> Edit Account Info
+    </a>
+    <br>
     <?php
-    printf( __( '<a href="%s">Edit your name, email, & password</a><br>
-        Not %s? <a href="%s">Sign out</a> ' ),
-    wc_get_endpoint_url( 'edit-address', 'billing'),
+    printf( __( 'Not %s? <a href="%s">Sign out</a> ' ),
     $current_user->display_name,
     wp_logout_url( get_permalink( wc_get_page_id( 'myaccount' ) ))
     );
@@ -37,10 +40,7 @@ wc_print_notices(); ?>
 
 
 
-<h1>Important Account Information</h1>
 <p><strong>Please confirm this data is complete!</strong></p>
-<button onclick="location.href='<?php printf("%s", wc_get_endpoint_url( 'edit-address', 'billing')); ?>'"> Edit Information
-</button>
 
 
 <?php
@@ -87,19 +87,39 @@ get_currentuserinfo();
     <?php wc_get_template( 'myaccount/my-address.php' ); ?>
 
 <?php else : ?>
+    <table>
+        <tr>                    
+            <th>
+                Field
+            </th>
+            <th>
+                Value
+            </th>
+        </tr>
+    <?php foreach ( $address as $key => $field ) : ?> 
 
-    <form method="post">
-      
-        <?php foreach ( $address as $key => $field ) : ?> 
+    <?php
+    /* I can't figure out how to properly suppress these. I can't find where the 'hidden' flag is stored.*/
+    if($key == 'billing_country' or 
+       $key == 'billing_company' or
+       $key == 'billing_address_2'
+       )
+        continue;
 
-        <?php woocommerce_form_field( $key, $field, ! empty( $_POST[ $key ] ) ? wc_clean( $_POST[ $key ] ) : $field['value'] ); ?>
 
+    $args = wp_parse_args( $field  );
+
+    ?>
+        <tr> 
+            <td>
+                <?php printf($args['label']);?> 
+            </td>
+            <td>
+                 <?php printf($field['value']); ?>
+             </td>
+        </tr>
     <?php endforeach; ?>
-
-
-
-</form>
-
+    </table>
 <?php endif; ?>
 
 

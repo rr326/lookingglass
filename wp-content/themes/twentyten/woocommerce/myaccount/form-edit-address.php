@@ -19,7 +19,6 @@ get_currentuserinfo();
 ?>
 <?php wc_print_notices(); ?>
 
-<h1>Important Account Information</h1>
 <p><strong>Please confirm this data is complete!</strong></p>
 
 <?php if ( ! $load_address ) : ?>
@@ -38,8 +37,9 @@ get_currentuserinfo();
         <?php endforeach; ?>
 
         <p>
-            <!-- <input type="submit" class="button" name="save_address" value="<?php _e( 'Save Address', 'woocommerce' ); ?>" /> -->
             <input type="submit" class="button" name="save_address" value="<?php _e( 'Save', 'woocommerce' ); ?>" />
+            <INPUT class="button" Type="button" VALUE="Cancel" onClick="history.go(-1);return true;">
+
             <?php wp_nonce_field( 'woocommerce-edit_address' ); ?>
             <input type="hidden" name="action" value="edit_address" />
         </p>
