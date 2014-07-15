@@ -19,7 +19,7 @@ get_currentuserinfo();
 ?>
 <?php wc_print_notices(); ?>
 
-<p><strong>Please confirm this data is complete!</strong></p>
+<p><strong>Please confirm your Account Profile data is complete!</strong></p>
 
 <?php if ( ! $load_address ) : ?>
 
