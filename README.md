@@ -14,10 +14,11 @@
 
 
 ## Plugins
-    * woocommerce - main plugin
-    * woocommerce poor guys swiss knife - free - gives extra billing fields, which is how we hack the account info
-    * woocommerce product add-ons - allows you to add a field to each product - the student you are registering
-    * woothemes helper - free - manages licenses
-    * regenerate thumbnails - WP->tools->Regenerate - to create the thumbnail sizes set on the woo->product page. Note - don't make too small - the CSS is set separately from the thumbnail size
-    * UpdraftPlus - backups
-    * RossModifications - currently unused. May delete. 
+
+* woocommerce - main plugin
+* woocommerce poor guys swiss knife - free - gives extra billing fields, which is how we hack the account info
+* woocommerce product add-ons - allows you to add a field to each product - the student you are registering
+* woothemes helper - free - manages licenses
+* regenerate thumbnails - WP->tools->Regenerate - to create the thumbnail sizes set on the woo->product page. Note - don't make too small - the CSS is set separately from the thumbnail size
+* UpdraftPlus - backups
+* RossModifications - currently unused. May delete. 
