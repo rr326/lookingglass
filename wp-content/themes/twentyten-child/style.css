@@ -7,3 +7,17 @@
 */
 
 @import url("../twentyten/style.css");
+
+
+/*Add Lookingglass logo (and hide the rendered text logo)*/
+#wrapper {
+    margin-top: 12px;
+}
+
+/* =Header - add clickable logo to title */
+#site-title a {
+    padding: 7px 0 7px 78px; /* allow space for image */
+    background: url(/wp-content/uploads/2014/07/LookingGlass_Logo_New.png) no-repeat;
+    color: transparent;
+}
+
