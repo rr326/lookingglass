@@ -67,7 +67,7 @@
 				-->
 				<span> 
 					<a href="/">
-						<img src="/wp-content/uploads/2014/07/LookingGlass_Logo_New.png" alt="Looking Glass Korean School">
+						<img src="/wp-content/uploads/2014/07/Homepage_logo.png" alt="Looking Glass Korean School" style="border-color: white;">
 					</a>
 				</span>
 				</<?php echo $heading_tag; ?>>
